@@ -1,0 +1,40 @@
+{
+  "name": "solid-nextjs",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@helpdice/icons": "^1.0.9",
+    "@helpdice/sdk": "^0.0.3",
+    "@helpdice/ui": "^1.1.0",
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^20.8.9",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "date-fns": "^4.1.0",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.4",
+    "framer-motion": "^10.12.16",
+    "next": "^14.2.23",
+    "next-intl": "^3.26.3",
+    "next-themes": "^0.2.1",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-toastify": "^11.0.3",
+    "sass": "^1.83.4",
+    "swiper": "^11.2.2",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.2.2",
+    "zod": "^3.24.1"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "RootLayout": {
+    "home_link": "Accueil",
+    "about_link": "À propos",
+    "counter_link": "Compteur",
+    "portfolio_link": "Portfolio",
+    "sign_in_link": "Se connecter",
+    "sign_up_link": "S'inscrire"
+  },
+  "Index": {
+    "meta_title": "Helpdice",
+    "meta_description": "Débloquez le potentiel de votre entreprise avec nos solutions informatiques complètes, y compris des services évolutifs, des logiciels personnalisés, des solutions cloud, de la cybersécurité et de la gestion des données. Notre équipe d'experts élabore des stratégies pour l'efficacité, la croissance et un soutien continu pour vous aider à prospérer, que vous soyez une startup ou une entreprise bien établie.",
+    "sponsors_title": "Partenaires"
+  },
+  "About": {
+    "meta_title": "À propos",
+    "meta_description": "Description de la page À propos",
+    "about_paragraph": "Bienvenue sur notre page À propos ! Nous sommes une équipe d'individus passionnés dédiée à la création de logiciels exceptionnels.",
+    "translation_powered_by": "Traduction fournie par"
+  },
+  "SignIn": {
+    "meta_title": "Se connecter",
+    "meta_description": "Connectez-vous facilement à votre compte grâce à notre processus de connexion convivial."
+  },
+  "SignUp": {
+    "meta_title": "S'inscrire",
+    "meta_description": "Créez un compte en toute simplicité grâce à notre processus d'inscription intuitif."
+  },
+  "Dashboard": {
+    "meta_title": "Tableau de bord",
+    "hello_message": "Bonjour {email}!",
+    "alternative_message": "Vous voulez construire votre SaaS plus rapidement en utilisant la même pile ? Essayez <url></url>."
+  },
+  "DashboardLayout": {
+    "dashboard_link": "Tableau de bord",
+    "user_profile_link": "Gérer votre compte",
+    "sign_out": "Se déconnecter"
+  },
+  "LogoDesign": {
+    "meta_title": "Conception de logo | Helpdice",
+    "meta_description": "Créez une identité de marque mémorable avec nos services de conception de logo experts. Des logos personnalisés adaptés à votre entreprise, garantissant originalité et reconnaissance.",
+    "meta_keywords": "conception de logo, logos personnalisés, identité de marque, logo professionnel, logo d'entreprise, création de logo créatif, image de marque, logo unique, design graphique, création de logo, développement de logo, branding professionnel"
+  },
+  "UXDesign": {
+    "meta_title": "Conception UI & UX | Helpdice",
+    "meta_description": "Améliorez la satisfaction des utilisateurs grâce à nos services de conception UX. Nous créons des designs intuitifs centrés sur l'utilisateur qui améliorent l'utilisabilité et favorisent l'engagement pour vos produits numériques.",
+    "meta_keywords": "conception UX, expérience utilisateur, services UX, design centré sur l'utilisateur, design intuitif, conception web, UX mobile, conception d'interface utilisateur, design de produit numérique, tests d'utilisabilité, recherche utilisateur, conception d'interaction, design réactif, conception UX/UI"
+  },
+  "SEO": {
+    "meta_title": "SEO | Helpdice",
+    "meta_description": "Boostez votre présence en ligne avec nos services SEO experts. Nous optimisons votre site web pour les moteurs de recherche afin d'améliorer les classements, d'attirer du trafic et d'augmenter les conversions.",
+    "meta_keywords": "services SEO, optimisation pour les moteurs de recherche, experts SEO, optimisation de site web, améliorer les classements, trafic organique, stratégie SEO, SEO sur page, SEO hors page, recherche de mots-clés, audit SEO, SEO local, SEO pour entreprises, marketing SEO, tactiques SEO"
+  },
+  "SocialMarketing": {
+    "meta_title": "Marketing social | Helpdice",
+    "meta_description": "Faites croître votre marque avec nos services de marketing sur les réseaux sociaux. Nous créons des campagnes engageantes qui augmentent la visibilité, favorisent l'engagement et boostent les conversions sur toutes les plateformes.",
+    "meta_keywords": "marketing sur les réseaux sociaux, campagnes sur les réseaux sociaux, croissance de marque, stratégie sur les réseaux sociaux, marketing digital, engagement sur les réseaux sociaux, gestion des réseaux sociaux, création de contenu, publicité sociale, optimisation des réseaux sociaux, notoriété de la marque, marketing sur Instagram, marketing sur Facebook, marketing sur LinkedIn, croissance des réseaux sociaux"
+  },
+  "APPDevelopment": {
+    "meta_title": "Développement d'applications | Helpdice",
+    "meta_description": "Transformez vos idées en réalité avec nos services d'experts en développement d'applications. Nous concevons et créons des applications mobiles performantes qui offrent une expérience utilisateur fluide et favorisent la croissance de votre entreprise.",
+    "meta_keywords": "développement d'applications, développement d'applications mobiles, développement d'applications personnalisées, développement d'applications iOS, développement d'applications Android, conception d'applications, conception d'applications mobiles, services de développement d'applications, entreprise de développement d'applications, développement d'applications multiplateformes, agence de développement d'applications, solutions d'applications, processus de développement d'applications, applications d'entreprise, développement d'applications mobiles"
+  },
+  "MCQ": {
+    "meta_title": "QCM | Helpdice",
+    "meta_description": "Explorez une large gamme de questions à choix multiples (QCM) sur divers sujets, conçues pour aider les étudiants et les professionnels à tester et améliorer leurs connaissances. Notre plateforme offre une interface conviviale, des sujets classés et des résultats instantanés pour une expérience d'apprentissage fluide. Parfait pour la préparation aux examens, l'amélioration des compétences et l'évaluation des connaissances.",
+    "meta_keywords": "QCM, questions à choix multiples, quiz en ligne, préparation aux examens, plateforme d'apprentissage, test de connaissances, questions de pratique, outils d'étude, quiz éducatifs, évaluation des compétences, quiz par sujet, testez vos connaissances, pratique académique."
+  },
+  "Learn": {
+    "meta_title": "Apprendre | Helpdice",
+    "meta_description": "",
+    "meta_keywords": ""
+  },
+  "ShippingPolicy": {
+    "meta_title": "Politique de livraison | Helpdice",
+    "meta_description": "Explorez notre politique de livraison pour obtenir des informations sur les délais de livraison, les méthodes d'expédition et les coûts. Nous garantissons une expédition rapide et fiable pour toutes les commandes afin de fournir une expérience d'achat fluide.",
+    "meta_keywords": "politique de livraison, informations sur la livraison, tarifs de livraison, méthodes de livraison, livraison de commande, délais de livraison, livraison gratuite, livraison internationale, livraison domestique, livraison rapide, coûts de livraison, suivi de commande, politique de retour, conditions d'expédition"
+  },
+  "TermsOfUse": {
+    "meta_title": "Consultez nos conditions d'utilisation pour comprendre les règles et les directives d'utilisation de notre site Web et de nos services. Assurez-vous une expérience sûre, sécurisée et conforme lors de l'interaction avec notre plateforme.",
+    "meta_description": "conditions d'utilisation, termes du site, contrat utilisateur, termes et conditions, politiques du site, conditions de service, directives de l'utilisateur, termes juridiques, politique de confidentialité, règles du site, droits de l'utilisateur, politique d'utilisation acceptable, conditions de service"
+  },
+  "PrivacyPolicy": {
+    "meta_title": "Lisez notre politique de confidentialité pour comprendre comment nous collectons, utilisons et protégeons vos informations personnelles. Votre confidentialité est importante pour nous, et nous nous engageons à sécuriser vos données.",
+    "meta_description": "politique de confidentialité, protection des données, informations personnelles, déclaration de confidentialité, vie privée des utilisateurs, sécurité des données, pratiques de confidentialité, collecte d'informations, conformité au RGPD, gestion sécurisée des données, utilisation des données, droits à la vie privée, confidentialité en ligne, stockage des données, consentement de l'utilisateur"
+  },
+  "Careers": {
+    "meta_title": "Découvrez des opportunités de carrière passionnantes avec nous ! Rejoignez notre équipe et évoluez dans un environnement dynamique. Consultez les offres d'emploi actuelles et devenez membre d'une organisation florissante.",
+    "meta_description": "carrières, opportunités d'emploi, rejoignez notre équipe, travaillez avec nous, offres d'emploi, recrutement, annonces d'emploi, opportunités professionnelles, croissance de carrière, développement professionnel, postes vacants, recrutement, postulez maintenant, culture d'entreprise"
+  },
+  "ContactUs": {
+    "meta_title": "Des questions ou besoin d'assistance ? Contactez-nous aujourd'hui ! Notre équipe est là pour répondre à toutes vos demandes, vous fournir du support ou recueillir vos retours. Contactez-nous via notre formulaire facile à utiliser.",
+    "meta_description": "contactez-nous, support client, contactez-nous, formulaire de contact, demandes, service client, informations de contact, équipe de support, assistance par email, support téléphonique, assistance à la clientèle"
+  },
+  "QNA": {
+    "meta_title": "Q&R | Helpdice",
+    "meta_description": "Accédez à une collection complète de questions et réponses sur divers sujets pour améliorer vos compétences d'apprentissage et de résolution de problèmes. Notre plateforme offre des réponses claires et concises avec des explications pour vous aider à mieux comprendre les concepts. Que vous vous prépariez aux examens ou que vous souhaitiez simplement élargir vos connaissances, notre centre de ressources est conçu pour soutenir votre parcours éducatif.",
+    "meta_keywords": "Questions et réponses, ressources éducatives, préparation aux examens, outils d'étude, plateforme d'apprentissage, explications des réponses, questions de pratique, amélioration des connaissances, soutien académique, préparation aux tests, réponses aux quiz, questions par sujet."
+  },
+  "History": {
+    "meta_title": "",
+    "meta_description": ""
+  },
+  "Profile": {
+    "meta_title": "",
+    "meta_description": ""
+  },
+  "Settings": {
+    "meta_title": "",
+    "meta_description": ""
+  },
+  "Cart": {
+    "meta_title": "",
+    "meta_description": ""
+  },
+  "Offers": {
+    "meta_title": "",
+    "meta_description": ""
+  }
+}

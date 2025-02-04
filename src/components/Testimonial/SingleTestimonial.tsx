@@ -1,0 +1,26 @@
+import type { Testimonial } from '@/types/testimonial';
+import { Rating } from '@helpdice/ui';
+import Image from 'next/image';
+
+const SingleTestimonial = ({ review }: { review: Testimonial }) => {
+  const { name, designation, image, content } = review;
+  return (
+    <div className="rounded-lg bg-white p-9 pt-7.5 shadow-solid-9 dark:border dark:border-strokedark dark:bg-blacksection dark:shadow-none">
+      <div className="mb-2.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark">
+        <div className="flex flex-row gap-3 align-center">
+          <Image width={60} height={50} className="" src={image} alt={name} />
+          <div className="space-y-1">
+            <h3 className="mb-1.5 text-metatitle2 text-black dark:text-white">
+              {name}
+            </h3>
+            <p className="text-sm mt-1">{designation}</p>
+          </div>
+        </div>
+        <Rating readOnly type="warning" value={review.rating} />
+      </div>
+      <p>{content}</p>
+    </div>
+  );
+};
+
+export default SingleTestimonial;
