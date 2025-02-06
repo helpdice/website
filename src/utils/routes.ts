@@ -3,6 +3,7 @@ import { getBaseUrl } from './Helpers';
 
 
 type Path = {
+  private?: boolean;
   name?: string;
   path: string;
   children?: Path[];
@@ -73,6 +74,7 @@ const paths = [
       {
         name: 'BLOG_POST',
         path: 'blog/:category/:slug',
+        private: true
       },
       {
         name: 'MCQ',
@@ -81,10 +83,12 @@ const paths = [
       {
         name: 'MCQ_CATEGORY',
         path: 'mcq/:category',
+        private: true
       },
       {
         name: 'MCQ_SLUG',
         path: 'mcq/:category/:slug',
+        private: true
       },
       {
         name: 'QNA',
@@ -93,10 +97,12 @@ const paths = [
       {
         name: 'QNA_CATEGORY',
         path: 'qna/:category',
+        private: true
       },
       {
         name: 'QNA_SLUG',
         path: 'qna/:slug',
+        private: true
       },
       {
         name: 'SERVICES',
@@ -137,6 +143,7 @@ const paths = [
   {
     name: 'ACCOUNT',
     path: 'account',
+    private: true,
     children: [
       {
         name: 'HISTORY',
@@ -237,25 +244,27 @@ function generateSitemapURLs(paths: Path[], basePath: string = ''): SitemapURLOb
 
   paths.forEach((path: Path) => {
     const fullPath = basePath + path.path;
-    const routeUrl = `${getBaseUrl()}${fullPath}`;
+    const routeUrl = `${getBaseUrl()}/${fullPath}`;
 
-    // If the path has a name, create the metadata object for it
-    if (path.name && !path.name.includes(':') ) {
-      urlObject[path.name] = {
-        url: routeUrl,
-        lastModified: new Date(), // You can replace this with actual last modified date logic
-        changeFrequency: 'weekly',  // Typically "daily" for frequently updated content
-        priority: 0.7,             // You can adjust the priority based on your needs
-        alternates: {
-          languages: langUrl(`${getBaseUrl()}/:lang${fullPath}`)
-        }
-      };
-    }
+    if (!path.private) {
+      // If the path has a name, create the metadata object for it
+      if (path.name && !path.name.includes(':') ) {
+        urlObject[path.name] = {
+          url: routeUrl,
+          lastModified: new Date(), // You can replace this with actual last modified date logic
+          changeFrequency: 'weekly',  // Typically "daily" for frequently updated content
+          priority: 0.7,             // You can adjust the priority based on your needs
+          alternates: {
+            languages: langUrl(`${getBaseUrl()}/:lang/${fullPath}`)
+          }
+        };
+      }
 
-    // If the path has children, recursively generate their URLs
-    if (path.children) {
-      const childURLs = generateSitemapURLs(path.children, fullPath + '/');
-      urlObject = { ...urlObject, ...childURLs };
+      // If the path has children, recursively generate their URLs
+      if (path.children) {
+        const childURLs = generateSitemapURLs(path.children, fullPath + '');
+        urlObject = { ...urlObject, ...childURLs };
+      }
     }
   });
 

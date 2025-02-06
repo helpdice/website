@@ -9,11 +9,11 @@ const SingleTestimonial = ({ review }: { review: Testimonial }) => {
       <div className="mb-2.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark">
         <div className="flex flex-row gap-3 align-center">
           <Image width={60} height={50} className="" src={image} alt={name} />
-          <div className="space-y-1">
-            <h3 className="mb-1.5 text-metatitle2 text-black dark:text-white">
+          <div>
+            <h3 className="text-metatitle2 text-black dark:text-white">
               {name}
             </h3>
-            <p className="text-sm mt-1">{designation}</p>
+            <span className="text-sm">{designation}</span>
           </div>
         </div>
         <Rating readOnly type="warning" value={review.rating} />

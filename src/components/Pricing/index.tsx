@@ -33,16 +33,16 @@ const Pricing = () => {
           <div className="flex flex-wrap justify-center gap-7.5 lg:flex-nowrap xl:gap-12.5">
             {/* <!-- Pricing Item --> */}
             <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
+              <h3 className="mb-3.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
                 $10{" "}
                 <span className="text-regular text-waterloo dark:text-manatee">
-                  /year
+                  / year
                 </span>
               </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
+              <h4 className="mb-0 text-para2 font-medium text-black dark:text-white">
                 Basic
               </h4>
-              <p>for small Businesses</p>
+              <p>for Small Businesses</p>
 
               <div className="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark">
                 <ul>
@@ -88,13 +88,13 @@ const Pricing = () => {
                 popular
               </div>
 
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
+              <h3 className="mb-3.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
                 $25{" "}
                 <span className="text-regular text-waterloo dark:text-manatee">
-                  /year
+                  / year
                 </span>
               </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
+              <h4 className="mb-0 text-para2 font-medium text-black dark:text-white">
                 Premium
               </h4>
               <p>for Enterprises</p>
@@ -139,13 +139,13 @@ const Pricing = () => {
 
             {/* <!-- Pricing Item --> */}
             <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
+              <h3 className="mb-3.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
                 $50{" "}
                 <span className="text-regular text-waterloo dark:text-manatee">
-                  /year
+                  / year
                 </span>
               </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
+              <h4 className="mb-0 text-para2 font-medium text-black dark:text-white">
                 Gold
               </h4>
               <p>for Companies</p>
