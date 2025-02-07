@@ -49,7 +49,7 @@ export async function generateMetadata(props: BlogSingleProps) {
       url: `${BASE_URL}/blog/${category}/${slug}`,
       siteName: SITE_NAME,
       type: 'article',
-      publishedTime: b.createdAt,
+      publishedTime: b?.createdAt,
       authors: ['Helpdice'],
     },
     robots: {

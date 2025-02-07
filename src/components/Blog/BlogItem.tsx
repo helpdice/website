@@ -1,6 +1,7 @@
 "use client";
 import { Blog } from "@/types/blog";
 import { humanTime } from "@/utils/Helpers";
+import { getUrl } from "@/utils/routes";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -43,7 +44,7 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
                 <Image src={image} alt={title} />
               </Link>
             )} */}
-            <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><Link href={`/blog/${category.name.toLowerCase()}/${slug}`}>
+            <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><Link href={getUrl('ARTICLE_POST', { category: category.name, slug: slug })}>
               {`${title.slice(0, 40)}...`}
             </Link></h2>
             <p className="mb-5 font-light text-gray-500 dark:text-gray-400">{`${desc?.slice(0, 85)}...`}</p>
@@ -53,10 +54,10 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
               <div className="flex items-center space-x-4">
                 <img className="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
                 <span className="text-sm dark:text-white">
-                  Jese Leos
+                  Admin
                 </span>
               </div>
-              <a href={`/blog/${category.name.toLowerCase()}/${slug}`} className="inline-flex items-center text-base text-primary-600 dark:text-primary-500 hover:underline">
+              <a href={getUrl('ARTICLE_POST', { category: category.name, slug: slug })} className="inline-flex items-center text-base text-primary-600 dark:text-primary-500 hover:underline">
                 Read more
                 <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
               </a>

@@ -42,7 +42,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "app.js", "next.config.js"  ],
+, "app.js", "next.config.js", "src/app/[locale]/(unauth)/article/sitemap.ts"  ],
   "exclude": [
     "node_modules"
   ]

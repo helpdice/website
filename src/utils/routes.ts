@@ -68,12 +68,12 @@ const paths = [
       //   path: 'cart',
       // },
       {
-        name: 'BLOG',
-        path: 'blog',
+        name: 'ARTICLE',
+        path: 'article',
       },
       {
-        name: 'BLOG_POST',
-        path: 'blog/:category/:slug',
+        name: 'ARTICLE_POST',
+        path: 'article/:category/:slug',
         private: true
       },
       {
@@ -101,7 +101,7 @@ const paths = [
       },
       {
         name: 'QNA_SLUG',
-        path: 'qna/:slug',
+        path: 'qna/:category/:slug',
         private: true
       },
       {

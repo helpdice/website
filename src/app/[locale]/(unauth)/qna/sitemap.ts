@@ -23,11 +23,11 @@ export default async function sitemap({
     }
   })).data.qnas;
   const urls = qnas.map((qna: Blog) => ({
-    url: `${getBaseUrl}/qna/${qna.category.slug}/${qna.slug}`,
+    url: `${getBaseUrl()}/qna/${qna.category?.slug}/${qna?.slug}`,
     changeFrequency: 'yearly',
     lastModified: qna.updatedAt,
     alternates: {
-          languages: langUrl(`${getBaseUrl()}/:lang/qna/${qna.category.slug}/${qna.slug}`)
+          languages: langUrl(`${getBaseUrl()}/:lang/qna/${qna.category?.slug}/${qna?.slug}`)
     },
   }));
   return [
