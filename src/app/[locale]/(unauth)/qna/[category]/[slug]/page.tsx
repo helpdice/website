@@ -19,7 +19,7 @@ import type { QNA, QNAListItem } from '@/types/qna';
 // import { getTranslations } from 'next-intl/server';
 import QnaRelated from '@/components/QNA/QNARelated';
 import { Content } from '@helpdice/sdk';
-import QNAHeader from '../header';
+import QNAHeader from '../../header';
 
 type QNASinglePageProps = {
   params: Promise<{ locale: string; slug: string }>
