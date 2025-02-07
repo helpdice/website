@@ -122,6 +122,13 @@
 }
 
 @layer utilities {
+  .span {
+    margin-block: calc(var(--spacing)* 0.5) !important;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
   /* third-party libraries CSS */
 
   .testimonial-01 .swiper-pagination-bullet {

@@ -10,7 +10,7 @@ interface Category {
   children: Category[];
 }
 
-const CategoryTree = ({ data }: { data: Category[] }) => {
+const CategoryTree = ({ data, path }: { data: Category[], path: string }) => {
   const [openSubItems, setOpenSubItems] = useState<{ [key: string]: boolean }>({});
 
   const toggleSubItem = (id: string) => {
@@ -24,7 +24,7 @@ const CategoryTree = ({ data }: { data: Category[] }) => {
     return (
       <li key={category._id} className="py-2 px-2 hover:bg-blue-50 hover:text-gray-800 rounded-lg transition duration-300">
         <div className="flex items-center justify-between space-x-2">
-          <Link href={`/mcq/${category.slug}`}><span className="text-base font-bold">{category.name}</span></Link>
+          <Link href={path.replace(':category', category.slug)}><span className="text-base font-bold">{category.name}</span></Link>
           {category.children?.length > 0 && (
             <svg
               onClick={() => toggleSubItem(category._id)}

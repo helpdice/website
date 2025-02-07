@@ -45,9 +45,11 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
               </Link>
             )} */}
             <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><Link href={getUrl('ARTICLE_POST', { category: category.slug, slug: slug })}>
-              {`${title.slice(0, 40)}...`}
+              {`${title.slice(0, 40)}${title?.length > 40 ? '...' : ''}`}
             </Link></h2>
-            <p className="mb-5 font-light text-gray-500 dark:text-gray-400">{`${desc?.slice(0, 85)}...`}</p>
+            {desc && (
+              <p className="mb-5 font-light text-gray-500 dark:text-gray-400">{`${desc.slice(0, 85)}${desc.length > 85 ? '...' : ''}`}</p>
+            )}
           </div>
           <div className="block mt-auto">
             <div className="flex justify-between items-center">

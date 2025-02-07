@@ -11,8 +11,8 @@ function Article({ children, heading, author = { name: 'Admin' }, dated }: { chi
                       <img className="mr-4 w-16 h-16 rounded-full" src="/images/user/user-02.png" alt="Jese Leos" />
                       <div className="space-y-0">
                           <a href="#" rel="author" className="text-xl font-bold text-gray-900 dark:text-white">{author?.name}</a>
-                          <p className="text-base text-gray-500 dark:text-gray-400">Helpdice Team</p>
-                          <p className="text-base text-gray-500 dark:text-gray-400">
+                          <p className="text-base span text-gray-500 dark:text-gray-400">Helpdice Team</p>
+                          <p className="text-base span text-gray-500 dark:text-gray-400">
                             <time dateTime="2022-02-08" title="February 8th, 2022">{format(dated ? new Date(dated) : new Date(), 'dd MMM, yyyy')}</time>
                             </p>
                       </div>

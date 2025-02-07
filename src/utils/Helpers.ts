@@ -48,6 +48,9 @@ export const shortMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug
 export const DayOfWeeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export function humanTime(dateFuture: Date, natural: boolean) {
+  if (!dateFuture || dateFuture.toString() === 'Invalid Date') {
+    return 'Anonymously';
+  }
   const dateNow = new Date();
   let d = Math.abs(dateFuture.getTime() - dateNow.getTime()) / 1000; // delta
   let r: any = {}; // result
