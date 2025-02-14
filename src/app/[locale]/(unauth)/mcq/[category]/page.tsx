@@ -4,7 +4,7 @@ import type { MCQ } from '@/types/mcq';
 import { Content } from '@helpdice/sdk';
 import SearchBar from '@/components/SearchBar';
 import MCQHeader from '../header';
-import { redirect } from 'next/navigation';
+import { permanentRedirect, RedirectType } from 'next/navigation';
 
 type MCQPageProps = {
   params: Promise<{ locale: string, category: string }>,
@@ -31,7 +31,7 @@ export default async function MCQCategoryPage(props: MCQPageProps) {
   const search = searchParams['search'];
   const _mcq = (await Content.mcq(category)).data.mcq;
   if (_mcq) {
-    redirect(`/mcq/${_mcq.category.slug}/${_mcq.slug}`);
+    permanentRedirect(`/mcq/${_mcq.category.slug}/${_mcq.slug}`, RedirectType.replace);
   }
   let mcqs: MCQ[] = [];
   try {
