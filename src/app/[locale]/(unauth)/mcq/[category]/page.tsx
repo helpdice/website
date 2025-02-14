@@ -4,6 +4,7 @@ import type { MCQ } from '@/types/mcq';
 import { Content } from '@helpdice/sdk';
 import SearchBar from '@/components/SearchBar';
 import MCQHeader from '../header';
+import { redirect } from 'next/navigation';
 
 type MCQPageProps = {
   params: Promise<{ locale: string, category: string }>,
@@ -25,17 +26,24 @@ export async function generateMetadata(props: MCQPageProps) {
 }
 
 export default async function MCQCategoryPage(props: MCQPageProps) {
-  const { category } = await props.params;
+  const { category, locale } = await props.params;
   const searchParams = await props.searchParams;
   const search = searchParams['search'];
-  const result = await Content.mcqs({
-    params: {
-      category: category,
-      search: search
-    }
-  });
-  const mcqs: MCQ[] = result.data.mcqs;
-
+  const _mcq = (await Content.mcq(category)).data.mcq;
+  if (_mcq) {
+    redirect(`/mcq/${_mcq.category.slug}/${_mcq.slug}`);
+  }
+  let mcqs: MCQ[] = [];
+  try {
+    mcqs = (await Content.mcqs({
+      params: {
+        category: category,
+        search: search
+      }
+    })).data.mcqs;
+  } catch (err) {
+    console.log(err);
+  }
   return (
     <section className="py-20 lg:py-25 xl:py-30">
       <MCQHeader />

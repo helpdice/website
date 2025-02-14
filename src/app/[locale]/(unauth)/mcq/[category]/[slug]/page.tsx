@@ -15,22 +15,22 @@
 // import { API_URL } from '@/utils/constants';
 
 // import MCQBody from '../body';
-import RelatedPost from '@/components/Blog/RelatedPost';
-import Image from 'next/image';
-import SharePost from '@/components/Blog/SharePost';
+import RelatedPost from "@/components/Blog/RelatedPost";
+import Image from "next/image";
+import SharePost from "@/components/Blog/SharePost";
 // import { fetchMcq, fetchMcqCategories, fetchMcqs } from '../../api/mcq.services';
-import type { MCQ, MCQListItem } from '@/types/mcq';
-import MCQOptions from '@/components/MCQ/McqOptions';
-import CategoryTree from '@/components/CategoryTree';
-import Article from '@/components/Blog/Article';
-import McqRelated from '@/components/MCQ/McqRelated';
-import { Content } from '@helpdice/sdk';
-import MCQHeader from '../../header';
-import SearchBox from '@/components/SearchBox';
+import type { MCQ, MCQListItem } from "@/types/mcq";
+import MCQOptions from "@/components/MCQ/McqOptions";
+import CategoryTree from "@/components/CategoryTree";
+import Article from "@/components/Blog/Article";
+import McqRelated from "@/components/MCQ/McqRelated";
+import { Content } from "@helpdice/sdk";
+import MCQHeader from "../../header";
+import SearchBox from "@/components/SearchBox";
 
 type MCQSingleProps = {
-  params: Promise<{ locale: string, slug: string }>
-}
+  params: Promise<{ locale: string; slug: string }>;
+};
 
 export async function generateMetadata(props: MCQSingleProps) {
   // const t = await getTranslations({
@@ -66,27 +66,60 @@ export async function generateMetadata(props: MCQSingleProps) {
 
 export default async function MCQSinglePage(props: MCQSingleProps) {
   const { slug } = await props.params;
-  const categories = (await Content.mcqsCategories()).data.categories;
-  const question: MCQ = (await Content.mcq(slug)).data.mcq;
-  const mcqs: MCQListItem[] = (await Content.mcqs({
-    params: {
-      category: question.category.slug,
-      related: true
-    }
-  })).data.mcqs;
+  let categories = [];
+  let question: MCQ = {
+    _id: 0,
+    title: "",
+    category: {
+      name: "",
+      slug: "",
+      metadata: undefined,
+      _id: undefined,
+      _ref: undefined
+    },
+    slug: "",
+    options: [],
+    correctAnswers: [],
+    explanations: undefined,
+    createdAt: "",
+    updatedAt: "",
+    author: {
+      name: "",
+      image: undefined,
+      bio: undefined,
+      _id: undefined
+    },
+    isMultipleChoice: false
+  };
+  let mcqs: MCQListItem[] = [];
+  try {
+    categories = (await Content.mcqsCategories()).data.categories;
+    question = (await Content.mcq(slug)).data.mcq;
+    mcqs = (
+      await Content.mcqs({
+        params: {
+          category: question.category.slug,
+          related: true,
+        },
+      })
+    ).data.mcqs;
+  } catch (err) {
+    console.log(err);
+  }
 
   return (
     <>
       {/* <MCQBody categories={categories} blogs={blogs} /> */}
-      <section className="pb-20 pt-20 lg:pb-25 lg:pt-25 xl:pb-30 xl:pt-30">
+      <section className="pt-20 pb-20 lg:pt-25 lg:pb-25 xl:pt-30 xl:pb-30">
         <MCQHeader />
-        <br /><br />
-        <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
+        <br />
+        <br />
+        <div className="max-w-c-1390 mx-auto px-4 md:px-8 2xl:px-0">
           <div className="flex flex-col-reverse gap-7.5 lg:flex-row xl:gap-12.5">
             <div className="md:w-1/2 lg:w-[32%]">
               <SearchBox path="/mcq/" />
 
-              <div className="animate_top mb-10 rounded-md border border-stroke bg-white p-9 shadow-solid-5 dark:border-strokedark dark:bg-blacksection">
+              <div className="animate_top border-stroke shadow-solid-5 dark:border-strokedark dark:bg-blacksection mb-10 rounded-md border bg-white p-9">
                 <h4 className="mb-7.5 text-2xl font-semibold text-black dark:text-white">
                   Categories
                 </h4>
@@ -98,7 +131,7 @@ export default async function MCQSinglePage(props: MCQSingleProps) {
             </div>
 
             {question?.image && (
-              <div className="mb-10 w-full overflow-hidden ">
+              <div className="mb-10 w-full overflow-hidden">
                 <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                   <Image
                     src={"/images/blog/blog-01.png"}
@@ -111,10 +144,13 @@ export default async function MCQSinglePage(props: MCQSingleProps) {
             )}
 
             <div className="lg:w-2/3">
-              <div className="animate_top rounded-md border border-stroke bg-white shadow-solid-5 dark:border-strokedark dark:bg-blacksection py-10 px-10">
+              <div className="animate_top border-stroke shadow-solid-5 dark:border-strokedark dark:bg-blacksection rounded-md border bg-white px-10 py-10">
                 {question && (
                   <>
-                    <Article heading={question.title} dated={question.createdAt}>
+                    <Article
+                      heading={question.title}
+                      dated={question.createdAt}
+                    >
                       <MCQOptions {...question} />
                       {/* <Divider h={1.5} /> */}
                       <McqRelated mcqs={mcqs} />

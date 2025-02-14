@@ -78,6 +78,8 @@ export default async function RootLayout(props: {
   return (
     <html lang={locale}>
       <GoogleAnalytics />
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7034818195807373"
+     crossOrigin="anonymous" />
       <body suppressHydrationWarning className={`dark:bg-black ${inter.className}`}>
         <NextIntlClientProvider
           locale={locale}

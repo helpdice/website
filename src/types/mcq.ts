@@ -9,7 +9,7 @@ export type MCQ = {
   slug: string;
   options: Array<string>;
   correctAnswers: Array<string>;
-  explanations: Record<string, string>;
+  explanations?: Record<string, string>;
   metadata?: string;
   desc?: string;
   createdAt: string;

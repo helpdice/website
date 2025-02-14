@@ -84,7 +84,7 @@ export default async function ContactPage(props: ContactPageProps) {
                     <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Contact
                     </h3>
                     <p className="text-gray-600 dark:text-slate-400">Mobile: +91 75800-11245</p>
-                    <p className="text-gray-600 dark:text-slate-400">Mail: support@helpdice.com</p>
+                    <p className="text-gray-600 dark:text-slate-400">Mail: contact@helpdice.com</p>
                   </div>
                 </li>
                 <li className="flex">

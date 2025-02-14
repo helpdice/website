@@ -61,7 +61,7 @@ const Footer = () => {
                   href="#"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
-                  sales@helpdice.com
+                  contact@helpdice.com
                 </Link>
               </motion.div>
 
