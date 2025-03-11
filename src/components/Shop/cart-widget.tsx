@@ -3,7 +3,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-array-index-key */
-import { Heart, Minus, Plus, Cart1 } from '@helpdice/icons';
+import { Heart, Minus, Plus, Cart } from '@helpdice/icons';
 import {
   Badge,
   Button,
@@ -52,7 +52,7 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
         style={{ position: 'relative' }}
         label={
           <>
-            <Cart1 /> Cart
+            <Cart /> Cart
           </>
         }
         value="1"
@@ -218,7 +218,7 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
                   <Spacer h={0.3} />
                   <Button
                     onClick={() => addItem(item)}
-                    iconRight={<Cart1 />}
+                    iconRight={<Cart />}
                     auto
                     scale={2 / 3}
                     px={0.6}
@@ -256,7 +256,7 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
       <Tooltip scale={0.5} text="Cart" placement="bottom">
         <Badge.Anchor>
           <Badge scale={0.4}>{totalUniqueItems}</Badge>
-          <Cart1 />
+          <Cart />
         </Badge.Anchor>
       </Tooltip>
     </Popover>
