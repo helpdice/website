@@ -5,7 +5,7 @@
 // FIXME: Update this configuration file based on your project information
 export const AppConfig = {
   name: 'Helpdice',
-  locales: ['en', 'fr'],
+  locales: ['en'],
   defaultLocale: 'en',
   // localePrefix,
 };
