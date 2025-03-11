@@ -4,7 +4,7 @@ import { defineRouting } from 'next-intl/routing';
 
 export const routing = defineRouting({
   locales: AppConfig.locales,
-  localePrefix: AppConfig.localePrefix,
+  // localePrefix: AppConfig.localePrefix,
   defaultLocale: AppConfig.defaultLocale,
 });
 

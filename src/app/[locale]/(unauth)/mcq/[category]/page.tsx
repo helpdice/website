@@ -12,7 +12,11 @@ type MCQPageProps = {
 }
 
 export async function generateMetadata(props: MCQPageProps) {
-  const { locale } = await props.params;
+  const { locale, category } = await props.params;
+  const _mcq = (await Content.mcq(category)).data.mcq;
+  if (_mcq) {
+    permanentRedirect(`/mcq/${_mcq.category.slug}/${_mcq.slug}`, RedirectType.replace);
+  }
   const t = await getTranslations({
     locale,
     namespace: 'MCQ',
@@ -29,10 +33,10 @@ export default async function MCQCategoryPage(props: MCQPageProps) {
   const { category, locale } = await props.params;
   const searchParams = await props.searchParams;
   const search = searchParams['search'];
-  const _mcq = (await Content.mcq(category)).data.mcq;
-  if (_mcq) {
-    permanentRedirect(`/mcq/${_mcq.category.slug}/${_mcq.slug}`, RedirectType.replace);
-  }
+  // const _mcq = (await Content.mcq(category)).data.mcq;
+  // if (_mcq) {
+  //   permanentRedirect(`/mcq/${_mcq.category.slug}/${_mcq.slug}`, RedirectType.replace);
+  // }
   let mcqs: MCQ[] = [];
   try {
     mcqs = (await Content.mcqs({

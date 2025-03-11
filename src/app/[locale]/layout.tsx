@@ -91,7 +91,7 @@ export default async function RootLayout(props: {
           {props.children}
           {/* <Footer /> */}
           <ToastContainer position="bottom-center" />
-          <Script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js" />
+          {/* <Script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js" /> */}
           <ScrollToTop />
         </ThemeClient>
         </NextIntlClientProvider>

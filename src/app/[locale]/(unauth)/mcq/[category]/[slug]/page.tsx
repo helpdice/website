@@ -27,9 +27,10 @@ import McqRelated from "@/components/MCQ/McqRelated";
 import { Content } from "@helpdice/sdk";
 import MCQHeader from "../../header";
 import SearchBox from "@/components/SearchBox";
+import { permanentRedirect, RedirectType } from "next/navigation";
 
 type MCQSingleProps = {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: string; slug: string, category: string }>;
 };
 
 export async function generateMetadata(props: MCQSingleProps) {
@@ -37,7 +38,11 @@ export async function generateMetadata(props: MCQSingleProps) {
   //   locale: props.params.locale,
   //   namespace: 'About',
   // });
-  const { slug } = await props.params;
+  const { slug, category } = await props.params;
+  if (slug === 'www.helpdice.com') {
+    const _mcq = (await Content.mcq(category)).data.mcq
+    permanentRedirect(`/mcq/${_mcq.category.slug}/${_mcq.slug}`, RedirectType.replace);
+  }
   const m = (await Content.mcq(slug)).data.mcq;
 
   const title =
