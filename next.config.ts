@@ -1,11 +1,12 @@
-// require('src/libs/Env');
-const withNextIntl = require('next-intl/plugin')('./src/libs/i18n.ts');
+import type { NextConfig } from "next";
+import withNextIntl from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withNextIntl({
+const nextConfig: NextConfig = withNextIntl('./src/libs/i18n.ts')({
   // eslint: {
-  //     dirs: ['.'],
+  //   dirs: ['.'],
   // },
+  // output: "export",
   trailingSlash: true,
   poweredByHeader: false,
   reactStrictMode: true
@@ -19,6 +20,6 @@ const nextConfig = withNextIntl({
   //     },
   //   ],
   // },
-})
+});
 
-module.exports = nextConfig;
+export default nextConfig;

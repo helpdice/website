@@ -18,17 +18,18 @@ export default async function sitemap({
   // Google's limit is 50,000 URLs per sitemap
   const start = id * 50000
   const end = start + 50000
-  const mcqs = (await Content.mcqs({
-    parans: {
+  const mcqs = (await Content.allMcqs({
+    params: {
       end
     }
   })).data.mcqs;
+  // console.log(mcqs);
   const urls = mcqs.map((mcq: Blog) => ({
-    url: `${getBaseUrl()}/mcq/${mcq.category.slug}/${mcq.slug}`,
+    url: `${getBaseUrl()}/mcq/${mcq.category?.slug}/${mcq?.slug}`,
     lastModified: mcq.updatedAt,
     changeFrequency: 'yearly',
     alternates: {
-      languages: langUrl(`${BASE_URL}/:lang/mcq/${mcq.category.slug}/${mcq.slug}`)
+      languages: langUrl(`${BASE_URL}/:lang/mcq/${mcq.category?.slug}/${mcq?.slug}`)
     },
   }));
   return [

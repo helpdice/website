@@ -78,23 +78,23 @@ export default async function RootLayout(props: {
   return (
     <html lang={locale}>
       <GoogleAnalytics />
-      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7034818195807373"
-     crossOrigin="anonymous" />
       <body suppressHydrationWarning className={`dark:bg-black ${inter.className}`}>
         <NextIntlClientProvider
           locale={locale}
           messages={messages}
         >
           <ThemeClient>
-          {/* <Lines /> */}
-          {/* <ToasterContext /> */}
-          {props.children}
-          {/* <Footer /> */}
-          <ToastContainer position="bottom-center" />
-          {/* <Script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js" /> */}
-          <ScrollToTop />
-        </ThemeClient>
+            {/* <Lines /> */}
+            {/* <ToasterContext /> */}
+            {props.children}
+            {/* <Footer /> */}
+            <ToastContainer position="bottom-center" />
+            <ScrollToTop />
+          </ThemeClient>
         </NextIntlClientProvider>
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7034818195807373" crossOrigin="anonymous" />
+        {/* <Script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js" /> */}
       </body>
     </html>
   );

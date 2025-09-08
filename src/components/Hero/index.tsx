@@ -1,11 +1,13 @@
 'use client';
 
 import { Auth } from '@helpdice/sdk';
-import { FormWrapper, type FormikHelpers, type FormikValues } from '@helpdice/ui';
+import { FormWrapper, Spinner, type FormikHelpers, type FormikValues } from '@helpdice/ui';
 import Image from 'next/image';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const Hero = () => {
+  const [loading, setLoading] = useState(false);
   return (
     <section className="overflow-hidden pb-20 pt-35 md:pt-40 xl:pb-25 xl:pt-46">
       <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
@@ -32,17 +34,23 @@ const Hero = () => {
                 initialValues={{
                   email: ""
                 }}
+                // validationSchema={}
                 onSubmit={function (
                   values: FormikValues,
                   { resetForm }: FormikHelpers<FormikValues>
                 ): void | Promise<any> {
                   return Auth.signUp(values,
                     {
+                      onFetching() {
+                        setLoading(true);
+                      },
                       onSuccess: (response: any) => {
+                        setLoading(false);
                         resetForm();
                         toast.success(response?.data?.message);
                       },
                       onError(error: any) {
+                        setLoading(false);
                         toast.error(error?.message)
                       }
                     });
@@ -57,6 +65,7 @@ const Hero = () => {
                           onChange={handleChange}
                           type="text"
                           name="email"
+                          required
                           autoComplete="off"
                           placeholder="Enter your email address"
                           className="rounded-full border border-stroke px-6 py-2.5 shadow-solid-2 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
@@ -64,9 +73,9 @@ const Hero = () => {
                         <button
                           type="submit"
                           aria-label="get started button"
-                          className="flex rounded-full bg-black px-7.5 py-2.5 text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
+                          className="flex items-center justify-center cursor-pointer rounded-full bg-black px-7.5 py-2.5 text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
                         >
-                          Get Started
+                          {loading ? <Spinner /> : 'Get Started'}
                         </button>
                       </div>
                     </form>

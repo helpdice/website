@@ -2,11 +2,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type CareersPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: CareersPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'Careers',
@@ -19,7 +19,7 @@ export async function generateMetadata(props: CareersPageProps) {
 }
 
 export default async function CareersPage(props: CareersPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale);
   return (
     <section className="">

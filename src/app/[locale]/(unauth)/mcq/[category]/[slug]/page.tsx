@@ -28,6 +28,7 @@ import { Content } from "@helpdice/sdk";
 import MCQHeader from "../../header";
 import SearchBox from "@/components/SearchBox";
 import { permanentRedirect, RedirectType } from "next/navigation";
+import { headers } from "next/headers";
 
 type MCQSingleProps = {
   params: Promise<{ locale: string; slug: string, category: string }>;
@@ -65,7 +66,7 @@ export async function generateMetadata(props: MCQSingleProps) {
   return {
     title,
     description,
-    keywords,
+    keywords
   };
 }
 
@@ -112,6 +113,15 @@ export default async function MCQSinglePage(props: MCQSingleProps) {
     console.log(err);
   }
 
+  // Retrieve headers from the request
+  const headersList = headers();
+  // const host = (await headersList).get('host'); // Host (e.g., 'example.com')
+  // const protocol = (await headersList).get('x-forwarded-proto') || 'http'; // Protocol (http/https)
+  const referer = (await headersList).get('referer') || ''; // Referer URL (path + query)
+
+  // Construct the full URL
+  const currentUrl = `${referer}`;
+
   return (
     <>
       {/* <MCQBody categories={categories} blogs={blogs} /> */}
@@ -149,18 +159,21 @@ export default async function MCQSinglePage(props: MCQSingleProps) {
             )}
 
             <div className="lg:w-2/3">
-              <div className="animate_top border-stroke shadow-solid-5 dark:border-strokedark dark:bg-blacksection rounded-md border bg-white px-10 py-10">
+              <div className="animate_top border-stroke shadow-solid-5 dark:border-strokedark dark:bg-blacksection rounded-md border bg-white px-5 py-5">
                 {question && (
                   <>
                     <Article
                       heading={question.title}
                       dated={question.createdAt}
                     >
+                      <span className="block mb-4"><small>Select Option & Check Answer</small></span>
                       <MCQOptions {...question} />
                       {/* <Divider h={1.5} /> */}
+                      <br />
                       <McqRelated mcqs={mcqs} />
                     </Article>
-                    <SharePost />
+                    {console.log(currentUrl)}
+                    <SharePost title={question.title} url={currentUrl} />
                   </>
                 )}
               </div>

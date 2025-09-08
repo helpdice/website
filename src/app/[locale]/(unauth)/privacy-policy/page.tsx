@@ -1,11 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type PrivacyPolicyPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: PrivacyPolicyPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'PrivacyPolicy',
@@ -18,7 +18,7 @@ export async function generateMetadata(props: PrivacyPolicyPageProps) {
 }
 
 export default async function PrivacyPolicy(props: PrivacyPolicyPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale);
   // const t = useTranslations('About');
 

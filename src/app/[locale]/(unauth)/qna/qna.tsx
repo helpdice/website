@@ -1,11 +1,6 @@
-/* eslint-disable react/no-danger */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/no-unescaped-entities */
 import { Tag } from '@helpdice/ui';
 import * as React from 'react';
-
 import { getUrl } from '@/utils/routes';
-// import { useDispatch } from 'react-redux';
 
 interface QnaProps {
   qna: {

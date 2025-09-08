@@ -5,13 +5,16 @@ import ServicesHero from '../ServicesHero';
 import SectionSteps from '@/components/Common/SectionStep';
 import ListItem from '@/components/Common/ListItem';
 import SectionFaq from '@/components/Common/SectionFaq';
+import { Accounting } from '@helpdice/sdk';
+import { cookies } from 'next/headers';
+import Products from '@/components/Shop/product';
 
 type UXDesignPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: UXDesignPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'UXDesign',
@@ -24,8 +27,23 @@ export async function generateMetadata(props: UXDesignPageProps) {
 }
 
 export default async function TermOfUse(props: UXDesignPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale);
+
+  let products: any[] = [];
+  try {
+    const result = await Accounting.items({ 
+      params: {
+        category: 'ux-designs'
+      },
+      headers: {
+        'Authorization': `Bearer ${(await cookies())?.get('ACID')?.value}`
+      }
+    });
+    products = result.data.products;
+  } catch (err) {
+    //
+  }
 
   return (
     <section className="py-20 lg:py-25 xl:py-30 px-15 lg:px-25 xl:px-30">
@@ -119,6 +137,7 @@ export default async function TermOfUse(props: UXDesignPageProps) {
             )
           }
         ]} />
+      <Products products={products} />
       <SectionFaq faqs={[
         {
           question: "What exactly is UX design ?",

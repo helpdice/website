@@ -2,6 +2,7 @@
 
 'use client';
 
+import { getUrl } from '@/utils/routes';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
@@ -68,7 +69,7 @@ const CTA = () => {
                   className="hidden xl:block"
                 />
                 <a
-                  href="/auth/signup"
+                  href={getUrl('REGISTER')}
                   className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90 dark:bg-white dark:text-black"
                 >
                   Sign up free

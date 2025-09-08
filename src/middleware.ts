@@ -1,4 +1,4 @@
-import type { NextRequest } from 'next/server';
+import { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 // import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import createMiddleware from 'next-intl/middleware';
@@ -13,10 +13,10 @@ const isProtectedRoute = [
 ];
 
 const isAuthPage = [
-  '/sign-in(.*)',
-  '/:locale/sign-in(.*)',
-  '/sign-up(.*)',
-  '/:locale/sign-up(.*)',
+  '/login(.*)',
+  '/:locale/login(.*)',
+  '/register(.*)',
+  '/:locale/register(.*)',
 ]
 const isSeoPage = [
   '(\\.xml|\\.txt)$',
@@ -58,14 +58,20 @@ export default function middleware(
       const locale = request.nextUrl.pathname.match(/(\/.*)\/account/)?.at(1) ?? '';
       const signInUrl = new URL(`${locale}/login`, request.url);
       // const dashboardUrl = new URL(`${locale}/dashboard`, request.url);
-      const authenticated = Boolean(request.cookies.get('ACID'))
-      // console.log('Authenticated : ', authenticated);
+      // console.log(request.cookies.get(process.env.NEXT_PUBLIC_TOKEN_KEY!));
+      const authenticated = Boolean(request.cookies.get('HSSID'));
+      console.log('Authenticated : ', authenticated);
       if (matchRoute(request, isProtectedRoute)) {
         if (authenticated) {
           return intlMiddleware(request);
         }
         return NextResponse.redirect(signInUrl);
       }
+
+      if (authenticated && matchRoute(request, isAuthPage)) {
+        return NextResponse.redirect(new URL(`${locale}/`, request.url))
+      }
+
       return intlMiddleware(request);
     }
     return intlMiddleware(request);

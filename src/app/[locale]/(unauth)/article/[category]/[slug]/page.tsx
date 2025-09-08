@@ -20,11 +20,12 @@ import RelatedPost from '@/components/Blog/RelatedPost';
 import type { Blog } from '@/types/blog';
 // import { format } from 'date-fns';
 // import { fetchBlog, fetchBlogCategories } from '../../../api/blog.services';
-import type { Category } from '@/types/category';
+// import type { Category } from '@/types/category';
 import Article from '@/components/Blog/Article';
 import { Content } from '@helpdice/sdk'
 import CategoryTree from '@/components/CategoryTree';
 import SearchBox from '@/components/SearchBox';
+import { headers } from 'next/headers';
 
 type BlogSingleProps = {
   params: Promise<{ locale: string; slug: string; category: string }>
@@ -84,8 +85,15 @@ export default async function BlogPost(props: BlogSingleProps) {
   const res = await Content.articleCategories();
   const categories: any[] = res.data.categories;
 
+  // Retrieve headers from the request
+  const headersList = headers();
+  const referer = (await headersList).get('referer') || ''; // Referer URL (path + query)
+
+  // Construct the full URL
+  const currentUrl = `${referer}`;
+
   return (
-    <section className="pb-20 pt-35 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
+    <section className="pb-20 pt-20 lg:pb-25 lg:pt-25 xl:pb-30 xl:pt-30">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           <div className="flex flex-col-reverse gap-7.5 lg:flex-row xl:gap-12.5">
             <div className="md:w-1/2 lg:w-[32%]">
@@ -107,7 +115,7 @@ export default async function BlogPost(props: BlogSingleProps) {
                   <div dangerouslySetInnerHTML={{ __html: blog.body }} className="blog-details" />
                 </Article>
 
-                <SharePost />
+                <SharePost title={blog.title} url={currentUrl} />
               </div>
             </div>
           </div>

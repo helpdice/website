@@ -8,7 +8,7 @@ const SingleTestimonial = ({ review }: { review: Testimonial }) => {
     <div className="rounded-lg bg-white p-9 pt-7.5 shadow-solid-9 dark:border dark:border-strokedark dark:bg-blacksection dark:shadow-none">
       <div className="mb-2.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark">
         <div className="flex flex-row gap-3 align-center">
-          <Image width={60} height={50} className="" src={image} alt={name} />
+          <Image style={{ width: 60, height: 60 }} width={60} height={50} className="" src={image} alt={name} />
           <div>
             <h3 className="text-metatitle2 text-black dark:text-white">
               {name}

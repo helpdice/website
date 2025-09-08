@@ -53,15 +53,18 @@ const Signin = () => {
               <div className="flex flex-col items-center gap-5 md:flex-row md:gap-2">
                 <button
                   onClick={async () => await Auth.signInWithGoogle({
-                    onSuccess(data: any) {
-                      console.log(data)
+                    onSuccess(res: any) {
+                      console.log(res.data.token)
+                      Auth.saveTokenToStorage(res.data.token);
+                      Auth.saveTokenToCookie(res.data.token);
                     },
                     onError: (error: any) => {
-                      toast.error(error.message)
+                      console.log(error);
+                      toast.error(error.message);
                     }
                   })}
                   aria-label="sign with google"
-                  className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                  className="text-body-color cursor-pointer dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
                 >
                   <span className="mr-3">
                     <svg
@@ -99,9 +102,9 @@ const Signin = () => {
                   Signin with Google
                 </button>
 
-                <button
+                {/* <button
                   aria-label="signup with github"
-                  className="text-body-color dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
+                  className="text-body-color cursor-pointer dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border border-stroke bg-[#f8f8f8] px-6 py-3 text-base outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none"
                 >
                   <span className="mr-3">
                     <svg
@@ -115,7 +118,7 @@ const Signin = () => {
                     </svg>
                   </span>
                   Signin with Github
-                </button>
+                </button> */}
               </div>
             </div>
             <div className="mb-10 flex items-center justify-center">
@@ -146,6 +149,9 @@ const Signin = () => {
                     Auth.saveTokenToStorage(response.data.token);
                     Auth.saveTokenToCookie(response.data.token);
                     toast.success(response.data.message);
+                  },
+                  onError: (error: any) => {
+                    toast.error(error?.message);
                   }
                 });
               }}

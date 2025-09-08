@@ -1,14 +1,13 @@
-// import { useTranslations } from 'next-intl';
 import SectionHeader from '@/components/Common/SectionHeader';
-import { Box, Database, Layout, Settings } from '@helpdice/icons';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+// import { Box, Database, Layout, Settings } from '@helpdice/icons';
 
 type AboutUsPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: AboutUsPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'About',
@@ -21,7 +20,8 @@ export async function generateMetadata(props: AboutUsPageProps) {
 }
 
 export default async function About(props: AboutUsPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
+  console.log(locale);
   setRequestLocale(locale);
 
   return (
@@ -95,7 +95,7 @@ export default async function About(props: AboutUsPageProps) {
                   <dt>
                     <div
                       className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                      <Settings />
+                      {/* <Settings /> */}
                     </div>
                     <p className="font-heading ml-16 text-lg leading-6 font-bold text-gray-700 dark:text-gray-400">Powerful API</p>
                   </dt>
@@ -107,7 +107,7 @@ export default async function About(props: AboutUsPageProps) {
                   <dt>
                     <div
                       className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                      <Box />
+                      {/* <Box /> */}
                     </div>
                     <p className="font-heading ml-16 text-lg leading-6 font-bold text-gray-700 dark:text-gray-400">Easy to integrate
                     </p>
@@ -120,7 +120,7 @@ export default async function About(props: AboutUsPageProps) {
                   <dt>
                     <div
                       className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                      <Database />
+                      {/* <Database /> */}
 
                     </div>
                     <p className="font-heading ml-16 text-lg leading-6 font-bold text-gray-700 dark:text-gray-400">Low Transaction Cost
@@ -133,7 +133,7 @@ export default async function About(props: AboutUsPageProps) {
                   <dt>
                     <div
                       className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                      <Layout />
+                      {/* <Layout /> */}
 
                     </div>
                     <p className="font-heading ml-16 text-lg leading-6 font-bold text-gray-700 dark:text-gray-400">Powerful Dashboard

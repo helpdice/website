@@ -97,12 +97,12 @@
     "meta_description": "Access a comprehensive collection of questions and answers across diverse topics to enhance your learning and problem-solving skills. Our platform provides clear, concise answers with explanations to help you grasp concepts better. Whether you're preparing for exams or simply expanding your knowledge, our resource hub is designed to support your educational journey.",
     "meta_keywords": "Questions and answers, educational resources, exam preparation, study tools, learning platform, answer explanations, practice questions, knowledge enhancement, academic support, test preparation, quiz answers, subject-specific questions."
   },
-  "History": {
-    "meta_title": "",
+  "Order": {
+    "meta_title": "Order History | Helpdice",
     "meta_description": ""
   },
   "Profile": {
-    "meta_title": "",
+    "meta_title": "Profile | Helpdice",
     "meta_description": ""
   },
   "Settings": {
@@ -110,7 +110,11 @@
     "meta_description": ""
   },
   "Cart": {
-    "meta_title": "",
+    "meta_title": "Cart | Helpdice",
+    "meta_description": ""
+  },
+  "Checkout": {
+    "meta_title": "Checkout | Helpdice",
     "meta_description": ""
   },
   "Offers": {

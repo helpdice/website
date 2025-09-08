@@ -7,12 +7,12 @@ import SearchBar from '@/components/SearchBar';
 import MCQHeader from './header';
 
 type MCQPageProps = {
-  params: Promise<{ locale: string }>,
+  params: { locale: string },
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export async function generateMetadata(props: MCQPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'MCQ',

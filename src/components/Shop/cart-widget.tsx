@@ -1,5 +1,6 @@
 'use client';
 
+import { getUrl } from '@/utils/routes';
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-array-index-key */
@@ -11,10 +12,9 @@ import {
   Popover,
   Spacer,
   Tabs,
-  Text,
-  Tooltip,
-  useCart,
+  Text
 } from '@helpdice/ui';
+import { useCart } from '@helpdice/pro';
 import Link from 'next/link';
 import React from 'react';
 
@@ -35,8 +35,7 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
   addToWishlist = () => {},
   removeFromWishlist = () => {},
 }: ProductProps) => {
-  const { addItem, removeItem, totalUniqueItems, items, updateItemQuantity } =
-    useCart();
+  const { addItem, removeItem, totalUniqueItems, items, updateItemQuantity } = useCart();
   const changeHandler = (next: any) => {
     onClose(next);
   };
@@ -107,8 +106,7 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
                   />
                 </Card.Content>
                 <Card.Content py={0.3} width="22%">
-                  <Tooltip scale={0.5} text="Remove from Cart" placement="left">
-                    <Button
+                <Button
                       onClick={() => removeItem(item.id)}
                       iconRight={<>&#10060;</>}
                       auto
@@ -118,10 +116,8 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
                     />
-                  </Tooltip>
                   <Spacer h={0.3} />
-                  <Tooltip scale={0.5} text="Add to Wishlist" placement="left">
-                    <Button
+                  <Button
                       onClick={() => addToWishlist(item)}
                       iconRight={<Heart />}
                       auto
@@ -131,7 +127,6 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
                     />
-                  </Tooltip>
                 </Card.Content>
               </Card>
             ))}
@@ -145,7 +140,7 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
                 width: '100%',
               }}
             >
-              <Link href="/">
+              <Link href={getUrl('CART')}>
                 <Button
                   mx="auto"
                   my={1}
@@ -253,12 +248,10 @@ const CartWidget: React.FunctionComponent<ProductProps> = ({
       visible={open}
       onVisibleChange={changeHandler}
     >
-      <Tooltip scale={0.5} text="Cart" placement="bottom">
-        <Badge.Anchor>
-          <Badge scale={0.4}>{totalUniqueItems}</Badge>
-          <Cart />
-        </Badge.Anchor>
-      </Tooltip>
+      <Badge.Anchor>
+        <Badge scale={0.4}>{totalUniqueItems}</Badge>
+        <Cart color="#99a3a4" style={{ cursor: 'pointer' }} />
+      </Badge.Anchor>
     </Popover>
   );
 };

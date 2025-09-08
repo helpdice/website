@@ -9,16 +9,17 @@ import Product from '@/components/Shop/product';
 import FaqSection from './faqSection';
 import SectionSteps from '@/components/Common/SectionStep';
 import ServicesHero from '../ServicesHero';
-import { Accounting } from '@helpdice/sdk';
+import { Accounting, getUrl } from '@helpdice/sdk';
+import { cookies } from 'next/headers';
 
 // import { fetchProducts } from '../../api/products.services';
 
 type LogoDesigningPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: LogoDesigningPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'LogoDesign',
@@ -51,15 +52,23 @@ export async function generateMetadata(props: LogoDesigningPageProps) {
 // };
 
 export default async function LogoDesign(props: LogoDesigningPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale);
+  let products: any[] = [];
+  try {
+    const result = await Accounting.items({ 
+      params: {
+        category: 'logo-designing'
+      },
+      headers: {
+        'Authorization': `Bearer ${(await cookies())?.get('ACID')?.value}`
+      }
+    });
+    products = result.data.products;
+  } catch (err) {
+    //
+  }
 
-  const result = await Accounting.items({ 
-    params: {
-      category: 'logo-designing'
-    }
-  });
-  const products: any[] = result.data.products;
   return (
     <section className="py-20 lg:py-25 xl:py-30 px-15 lg:px-25 xl:px-30">
       <ServicesHero heading="Logo Design" description="It does not matter how your company, product or service are

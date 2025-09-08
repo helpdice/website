@@ -1,7 +1,6 @@
 import { langUrl } from '@/libs/i18n';
 import { getBaseUrl } from './Helpers';
 
-
 type Path = {
   private?: boolean;
   name?: string;
@@ -146,17 +145,21 @@ const paths = [
     private: true,
     children: [
       {
-        name: 'HISTORY',
-        path: 'history'
+        name: 'CART',
+        path: 'cart'
       },
       {
-        name: 'PROFILE',
-        path: 'profile'
+        name: 'CHECKOUT',
+        path: 'checkout'
       },
       {
-        name: 'SETTINGS',
-        path: 'settings'
-      }
+        name: 'ORDER',
+        path: 'orders'
+      },
+      // {
+      //   name: 'PROFILE',
+      //   path: 'profile'
+      // },
     ]
   }
   // {
@@ -210,7 +213,7 @@ export function getUrl(
   function populateRouteMap(routes: any, parentPath: string = '') {
     routes.forEach(
       (route: { path: string; name: string | number; children: any }) => {
-        const fullPath = parentPath + route.path;
+        const fullPath = parentPath + '/' + route.path;
         routeMap[route.name] = fullPath;
         if (route.children) {
           populateRouteMap(route.children, fullPath);
@@ -229,7 +232,7 @@ export function getUrl(
   for (const [key, value] of Object.entries(params)) {
     url = url.replace(`:${key}`, value);
   }
-  return getBaseUrl() + '/' + url;
+  return getBaseUrl() + url.replace('//', '/');
 }
 
 // export function scrollTo(id: string) {

@@ -1,7 +1,7 @@
 "use client"
 import { ThemeProvider } from "next-themes";
 
-const ThemeClient = ({ children }) => {
+const ThemeClient = ({ children }: { children: React.ReactNode }) => {
     return (
         <ThemeProvider
           enableSystem={false}

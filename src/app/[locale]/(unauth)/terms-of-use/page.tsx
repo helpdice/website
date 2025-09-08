@@ -1,11 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type TermsOfUsePageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: TermsOfUsePageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'TermsOfUse',
@@ -18,7 +18,7 @@ export async function generateMetadata(props: TermsOfUsePageProps) {
 }
 
 export default async function TermOfUse(props: TermsOfUsePageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale)
 
   return (

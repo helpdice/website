@@ -6,11 +6,11 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 
 type RefundPoicyPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: RefundPoicyPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'About',
@@ -23,7 +23,7 @@ export async function generateMetadata(props: RefundPoicyPageProps) {
 }
 
 export default async function PrivacyPolicy(props: RefundPoicyPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale)
 
   return (

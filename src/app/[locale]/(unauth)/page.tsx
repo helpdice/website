@@ -24,12 +24,13 @@ import Hero from '@/components/Hero';
 import Integration from '@/components/Integration';
 import Pricing from '@/components/Pricing';
 import Testimonial from '@/components/Testimonial';
+import { getCookie } from '@helpdice/sdk';
 // import { getUrl } from '@/utils/routes';
 
 // import { useEffect } from 'react';
 
 type IndexPageProps = {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 };
 
 export async function generateMetadata(props: IndexPageProps) {
@@ -46,6 +47,7 @@ export async function generateMetadata(props: IndexPageProps) {
 }
 
 export default function Index() {
+  // console.log(getCookie());
   return (
     <div>
       <Hero />

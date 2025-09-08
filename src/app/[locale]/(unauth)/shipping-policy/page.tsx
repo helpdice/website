@@ -1,16 +1,13 @@
-/* eslint-disable react/no-unescaped-entities */
-// import './index.scss';
-
 // import { useTranslations } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 
 type ShippingPoicyPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: ShippingPoicyPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'ShippingPolicy',
@@ -23,7 +20,7 @@ export async function generateMetadata(props: ShippingPoicyPageProps) {
 }
 
 export default async function ShippingPolicy(props: ShippingPoicyPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale)
 
   return (

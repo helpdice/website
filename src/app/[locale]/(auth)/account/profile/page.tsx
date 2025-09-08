@@ -1,7 +1,7 @@
 import Placeholder from '@/components/Placeholder';
 import { getTranslations } from 'next-intl/server';
-
-// import { Hello } from '@/components/Hello';
+import Image from 'next/image';
+import ProfileBody from './body';
 
 export async function generateMetadata(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
@@ -15,12 +15,12 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
   };
 }
 
-const Profile = async () => {
+const ProfilePage = () => {
   return (
-  <div className="py-20 lg:py-25 lg:px-10 xl:py-30 xl:px-20">
-    <Placeholder />
-  </div>
+    <div className="py-15">
+      <ProfileBody />
+    </div>
   );
-}
+};
 
-export default Profile;
+export default ProfilePage;

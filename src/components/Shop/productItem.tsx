@@ -1,16 +1,24 @@
 "use client"
 
+import { AuthContext } from "@/providers/AuthProvider";
 import type { Product } from "@/types/products";
-import { useCart } from "@helpdice/ui";
+import { getUrl } from "@/utils/routes";
+import { useCart } from "@helpdice/pro";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 
 function ProductItem({ product }: { product: Product }) {
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
+  const router = useRouter();
+  const currentUser = useContext(AuthContext);
+  // console.log(items);
   return (
     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
       <h3 className="mb-4 text-2xl font-semibold">{product.name}</h3>
       <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use & for your next project.</p>
       <div className="flex justify-center items-baseline my-8">
-        <span className="mr-2 text-5xl font-extrabold">₹ {product.rate}</span>
+        <span className="mr-2 text-3xl font-extrabold">₹ {product.rate}</span>
         <span className="text-gray-500 dark:text-gray-400">/ project</span>
       </div>
       <ul role="list" className="mb-8 space-y-4 text-left">
@@ -21,16 +29,21 @@ function ProductItem({ product }: { product: Product }) {
           </li>
         ))}
       </ul>
-      <a href="#" onClick={() =>
-        addItem(
-          {
-            id: product._id,
-            name: product.name,
-            price: Number(product.rate),
-          },
-          1,
-        )
-      } className="text-gray-900 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get Now</a>
+      <button type="button" onClick={() => {
+        if (currentUser?.authenticated)  {
+          addItem(
+            {
+              id: product._id,
+              name: product.name,
+              price: Number(product.rate),
+            },
+            1,
+          );
+          toast.info('Item Added to Cart!')
+        } else {
+          router.push(getUrl('LOGIN'))
+        }
+      }} className="text-gray-50 cursor-pointer bg-gray-600 hover:bg-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">Add to Cart</button>
     </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
-function SearchBox({ path }) {
+function SearchBox({ path }: { path: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   return (

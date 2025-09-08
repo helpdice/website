@@ -9,13 +9,14 @@ import SectionSteps from '@/components/Common/SectionStep';
 import Products from '@/components/Shop/product';
 import SectionFaq from '@/components/Common/SectionFaq';
 import { Accounting } from '@helpdice/sdk';
+import { cookies } from 'next/headers';
 
 type DigitalMarketingPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: DigitalMarketingPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'SocialMarketing',
@@ -28,14 +29,24 @@ export async function generateMetadata(props: DigitalMarketingPageProps) {
 }
 
 export default async function DigitalMarketingPage(props: DigitalMarketingPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale);
 
-  const products = (await Accounting.items({
-    params: {
-      category: 'social-media-marketing'
+  let products: any[] = [];
+    try {
+      const result = await Accounting.items({ 
+        params: {
+          category: 'digital-marketing'
+        },
+        headers: {
+          'Authorization': `Bearer ${(await cookies())?.get('ACID')?.value}`
+        }
+      });
+      products = result.data.products;
+    } catch (err) {
+      //
     }
-  })).data.items;
+
   return (
     <section className="py-20 lg:py-25 xl:py-30 px-15 lg:px-25 xl:px-30">
       <ServicesHero heading="Social Media Marketing" description=" There are 3.2 billion daily active social media users in the

@@ -21,7 +21,6 @@ export async function generateMetadata(props: LoginPageProps) {
 const SignInPage = async (props: LoginPageProps) => {
   const { locale } = await props.params;
   setRequestLocale(locale);
-
   return <Signin />;
 };
 

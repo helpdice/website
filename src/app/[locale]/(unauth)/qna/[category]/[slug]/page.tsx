@@ -21,6 +21,7 @@ import QnaRelated from '@/components/QNA/QNARelated';
 import { Content } from '@helpdice/sdk';
 import QNAHeader from '../../header';
 import SearchBox from '@/components/SearchBox';
+import { headers } from 'next/headers';
 
 type QNASinglePageProps = {
   params: Promise<{ locale: string; slug: string }>
@@ -91,6 +92,13 @@ export default async function About(props: QNASinglePageProps) {
     }
   })).data.qnas;
 
+  // Retrieve headers from the request
+  const headersList = headers();
+  const referer = (await headersList).get('referer') || ''; // Referer URL (path + query)
+
+  // Construct the full URL
+  const currentUrl = `${referer}`;
+
   return (
     <section className="pb-20 pt-20 lg:pb-25 lg:pt-25 xl:pb-30 xl:pt-30">
       <QNAHeader />
@@ -138,7 +146,7 @@ export default async function About(props: QNASinglePageProps) {
                 {/* <Divider h={1.5} /> */}
                 <QnaRelated qnas={qnas.slice(0, 5)} />
               </Article>
-              <SharePost />
+              <SharePost title={qna.question} url={currentUrl} />
             </div>
           </div>
         </div>

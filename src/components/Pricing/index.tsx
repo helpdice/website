@@ -1,8 +1,30 @@
 "use client";
 import Image from "next/image";
 import SectionHeader from "../Common/SectionHeader";
+import { useContext } from "react";
+import { AuthContext } from "@/providers/AuthProvider";
+import { useRouter } from "next/navigation";
+import { getUrl } from "@/utils/routes";
+import { Payment } from "@helpdice/sdk";
 
 const Pricing = () => {
+  const router = useRouter();
+  const currentUser = useContext(AuthContext);
+  const handleMembership = (price: number) => {
+    if (currentUser?.authenticated) {
+      Payment.start({
+        entity: {},
+        entityId: '',
+        orderId: '',
+        paymentType: 'Online',
+        paymentService: 'Razor Pay',
+        currency: 'INR',
+        amount: Number(price * 85)
+      });
+    } else {
+      router.replace(getUrl('LOGIN'));
+    }
+  }
   return (
     <>
       {/* <!-- ===== Pricing Table Start ===== --> */}
@@ -25,7 +47,7 @@ const Pricing = () => {
           <div className="absolute -bottom-15 -z-1 h-full w-full">
             <Image
               fill
-              src="./images/shape/shape-dotted-light.svg"
+              src="/images/shape/shape-dotted-light.svg"
               alt="Dotted"
               className="dark:hidden"
             />
@@ -62,8 +84,9 @@ const Pricing = () => {
               </div>
 
               <button
+                onClick={() => handleMembership(10)}
                 aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                className="group/btn cursor-pointer inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
               >
                 <span className="duration-300 group-hover/btn:pr-2">
                   Join Now
@@ -118,7 +141,8 @@ const Pricing = () => {
 
               <button
                 aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                onClick={() => handleMembership(25)}
+                className="group/btn cursor-pointer inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
               >
                 <span className="duration-300 group-hover/btn:pr-2">
                   Join Now
@@ -169,7 +193,8 @@ const Pricing = () => {
 
               <button
                 aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                onClick={() => handleMembership(50)}
+                className="group/btn cursor-pointer inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-gray-400"
               >
                 <span className="duration-300 group-hover/btn:pr-2">
                   Join Now

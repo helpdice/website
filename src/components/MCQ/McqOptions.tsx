@@ -66,7 +66,7 @@ function MCQOptions(question: MCQ) {
               )}
               <label
                 htmlFor={`option_${option}`}
-                className={`w-full p-4 cursor-pointer rounded-lg text-lg font-medium text-gray-700 transition duration-300 ease-in-out
+                className={`w-full p-4 cursor-pointer border rounded-lg text-lg font-medium text-gray-700 transition duration-300 ease-in-out
                 ${selectedAnswers.includes(option) ? 'bg-blue-100 border-2 border-blue-600 text-blue-800' : 'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:text-white'}
                 ${selectedAnswers.includes(option) ? 'shadow-md' : ''}`}
               >

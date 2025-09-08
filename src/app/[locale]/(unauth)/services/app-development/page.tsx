@@ -12,11 +12,11 @@ import SectionFaq from '@/components/Common/SectionFaq';
 import { Accounting } from '@helpdice/sdk';
 
 type AppDevelopmentPageProps = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata(props: AppDevelopmentPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   const t = await getTranslations({
     locale,
     namespace: 'APPDevelopment',
@@ -29,7 +29,7 @@ export async function generateMetadata(props: AppDevelopmentPageProps) {
 }
 
 export default async function TermOfUse(props: AppDevelopmentPageProps) {
-  const { locale } = await props.params;
+  const { locale } = props.params;
   setRequestLocale(locale);
 
   const products = (await Accounting.items({

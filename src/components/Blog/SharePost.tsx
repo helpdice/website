@@ -1,4 +1,8 @@
-const SharePost = () => {
+"use client"
+
+import { shareUrl } from "@helpdice/sdk";
+
+const SharePost = ({ title, url }: { title: string; url: string }) => {
   return (
     <>
       <div className="mt-11 flex flex-wrap gap-4 md:items-center md:justify-between md:gap-0">
@@ -7,7 +11,7 @@ const SharePost = () => {
             <p className="text-black dark:text-white">Share On:</p>
           </li>
           <li>
-            <a href="#" aria-label="social link">
+            <button onClick={() => shareUrl(title, url).facebook()} className="cursor-pointer" aria-label="social link">
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -28,10 +32,10 @@ const SharePost = () => {
                   </clipPath>
                 </defs>
               </svg>
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#" aria-label="social link">
+            <button onClick={() => shareUrl(title, url).twitter()} className="cursor-pointer" aria-label="social link">
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -52,10 +56,10 @@ const SharePost = () => {
                   </clipPath>
                 </defs>
               </svg>
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#" aria-label="social link">
+            <button onClick={() => shareUrl(title, url).linkedin()} className="cursor-pointer" aria-label="social link">
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -76,10 +80,10 @@ const SharePost = () => {
                   </clipPath>
                 </defs>
               </svg>
-            </a>
+            </button>
           </li>
-          <li>
-            <a href="#" aria-label="social link">
+          {/* <li>
+            <button onClick={() => shareUrl(title, url).behance()} className="cursor-pointer" aria-label="social link">
               <svg
                 className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
                 width="24"
@@ -96,8 +100,8 @@ const SharePost = () => {
                   </clipPath>
                 </defs>
               </svg>
-            </a>
-          </li>
+            </button>
+          </li> */}
         </ul>
 
         <ul className="flex items-center gap-4">
