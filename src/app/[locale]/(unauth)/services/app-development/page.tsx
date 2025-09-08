@@ -12,11 +12,11 @@ import SectionFaq from '@/components/Common/SectionFaq';
 import { Accounting } from '@helpdice/sdk';
 
 type AppDevelopmentPageProps = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export async function generateMetadata(props: AppDevelopmentPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'APPDevelopment',
@@ -29,7 +29,7 @@ export async function generateMetadata(props: AppDevelopmentPageProps) {
 }
 
 export default async function TermOfUse(props: AppDevelopmentPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
 
   const products = (await Accounting.items({
@@ -43,9 +43,9 @@ export default async function TermOfUse(props: AppDevelopmentPageProps) {
         <div>
           <p>
             Mobile app development services focus on creating applications for mobile devices, such as smartphones and tablets. These services include designing, coding, and testing apps for iOS and Android platforms, ensuring compatibility with various devices. Developers use frameworks like React Native or Swift to deliver high-performing and user-friendly mobile apps tailored to clients' needs.</p>
-          <p>
+          <span>
             Web app development services specialize in creating dynamic applications that run on web browsers. These services include building responsive, scalable, and secure web apps using technologies such as HTML, CSS, JavaScript, and frameworks like Angular or Vue.js. Developers ensure that web apps deliver a seamless user experience across different browsers and devices while maintaining high performance and security standards.
-          </p>
+          </span>
         </div>
       )} />
       <br />

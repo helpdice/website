@@ -61,7 +61,7 @@ export default function middleware(
       // const dashboardUrl = new URL(`${locale}/dashboard`, request.url);
       // console.log(request.cookies.get(process.env.NEXT_PUBLIC_TOKEN_KEY!));
       const authenticated = Boolean(request.cookies.get('HSSID'));
-      console.log('Authenticated : ', authenticated);
+      // console.log('Authenticated : ', authenticated);
       if (matchRoute(request, isProtectedRoute)) {
         if (authenticated) {
           return intlMiddleware(request);

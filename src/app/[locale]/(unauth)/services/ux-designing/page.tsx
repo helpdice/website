@@ -14,7 +14,7 @@ type UXDesignPageProps = {
 }
 
 export async function generateMetadata(props: UXDesignPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'UXDesign',
@@ -27,12 +27,11 @@ export async function generateMetadata(props: UXDesignPageProps) {
 }
 
 export default async function TermOfUse(props: UXDesignPageProps) {
-  const { locale } = props.params;
-  setRequestLocale(locale);
-
   let products: any[] = [];
   try {
-    const result = await Accounting.items({ 
+    const { locale } = await props.params;
+    setRequestLocale(locale);
+    const result = await Accounting.items({
       params: {
         category: 'ux-designs'
       },

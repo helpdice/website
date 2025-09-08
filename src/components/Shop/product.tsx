@@ -29,7 +29,7 @@ export const Products: React.FunctionComponent<ProductProps> = ({
                 rate: number | string;
                 features: string[];
               }) => (
-                <ProductItem product={product} />
+                <ProductItem key={`product-item-${product._id}`} product={product} />
               ))}
           </div>
         </div>

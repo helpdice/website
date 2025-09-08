@@ -12,12 +12,12 @@ import SearchBar from '@/components/SearchBar';
 import QNAHeader from './header';
 
 type QNAPaeProps = {
-  params: { locale: string, slug: string },
+  params: Promise<{ locale: string, slug: string }>,
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export async function generateMetadata(props: QNAPaeProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'QNA',
@@ -30,7 +30,7 @@ export async function generateMetadata(props: QNAPaeProps) {
 }
 
 export default async function About(props: QNAPaeProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
   const searchParams = await props.searchParams;
   const search = searchParams['search'];
@@ -55,7 +55,7 @@ export default async function About(props: QNAPaeProps) {
       <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
         <div className="grid grid-cols-1 gap-5.5 md:grid-cols-1 lg:grid-cols-2 xl:gap-8">
           {qnas.map((qna, key) => (
-            <QNAItem key={key} qna={qna} />
+            <QNAItem key={`qna-${key}-${qna._id}`} qna={qna} />
           ))}
         </div>
       </div>

@@ -6,11 +6,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type ContactPageProps = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export async function generateMetadata(props: ContactPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'ContactUs',
@@ -23,7 +23,7 @@ export async function generateMetadata(props: ContactPageProps) {
 }
 
 export default async function ContactPage(props: ContactPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
 
   return (

@@ -7,7 +7,7 @@ function SectionSteps({ steps, heading, description }: { steps: Step[], heading:
       {description && <p className="">{description}</p>}
       <div className=""> {/* max-w-xl */}
         {steps.map((step, index) => (
-          <div className="flex">
+          <div key={`step-${index}-${step._id}`} className="flex">
             <div className="mr-4 flex flex-col items-center">
               <div>
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-blue-900">

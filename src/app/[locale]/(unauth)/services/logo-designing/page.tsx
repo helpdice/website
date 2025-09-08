@@ -19,7 +19,7 @@ type LogoDesigningPageProps = {
 }
 
 export async function generateMetadata(props: LogoDesigningPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'LogoDesign',
@@ -52,7 +52,7 @@ export async function generateMetadata(props: LogoDesigningPageProps) {
 // };
 
 export default async function LogoDesign(props: LogoDesigningPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
   let products: any[] = [];
   try {

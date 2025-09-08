@@ -6,7 +6,7 @@ type CareersPageProps = {
 }
 
 export async function generateMetadata(props: CareersPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'Careers',
@@ -19,7 +19,7 @@ export async function generateMetadata(props: CareersPageProps) {
 }
 
 export default async function CareersPage(props: CareersPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
   return (
     <section className="">

@@ -124,7 +124,7 @@ const ProfileBody = () => {
                                 {editSection === 'skills' ? (
                                     <div>
                                         {values.skills.map((skill, index) => (
-                                            <div key={index} className="mb-4">
+                                            <div key={`${index}-${skill}`} className="mb-4">
                                                 <Input
                                                     name={`skills[${index}]`}
                                                     className="w-full p-3 border border-gray-300 rounded-lg"

@@ -23,7 +23,7 @@ const RelatedPost = async () => {
           {blogs.slice(0, 3).map((post, key) => (
             <div
               className="mb-7.5 flex flex-wrap gap-4 xl:flex-nowrap 2xl:gap-6"
-              key={key}
+              key={`post-${post._id}-${key}`}
             >
               {/* {post?.image ? (
                 <div className="max-w-45 relative h-18 w-45">

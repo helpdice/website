@@ -21,7 +21,7 @@ export default function CartBody() {
             <div className="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                 <div className="space-y-6">
                     {items.length > 0 ? items.map((item) => (
-                        <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                        <div key={`cart-item-${item.id}`} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
                             <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                                 <a href="#" className="shrink-0 md:order-1">
                                     <img className="h-20 w-20 dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg" alt="imac image" />

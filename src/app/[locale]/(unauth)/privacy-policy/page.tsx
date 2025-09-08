@@ -5,7 +5,7 @@ type PrivacyPolicyPageProps = {
 }
 
 export async function generateMetadata(props: PrivacyPolicyPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'PrivacyPolicy',
@@ -18,7 +18,7 @@ export async function generateMetadata(props: PrivacyPolicyPageProps) {
 }
 
 export default async function PrivacyPolicy(props: PrivacyPolicyPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
   // const t = useTranslations('About');
 

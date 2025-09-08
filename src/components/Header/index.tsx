@@ -129,7 +129,7 @@ const Header = () => {
           <nav>
             <ul className="flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-10">
               {menu.map((menuItem, key) => (
-                <li key={key} className={menuItem.submenu && 'group relative'}>
+                <li key={`menuItem-${key}-${menuItem.id}`} className={menuItem.submenu && 'group relative'}>
                   {menuItem.submenu
                     ? (
                       <>

@@ -15,7 +15,7 @@ function SectionFaq({ faqs }: { faqs: { question: string, answer: React.ReactNod
         <ul className="">
 
           {faqs.map((faq) => (
-            <li className="text-left mb-10">
+            <li key={`faq-${faq.question}`} className="text-left mb-10">
               <div className="flex flex-row items-start mb-5">
                 <div
                   className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-indigo-500 text-white border-4 border-white text-xl font-semibold">
@@ -39,7 +39,7 @@ function SectionFaq({ faqs }: { faqs: { question: string, answer: React.ReactNod
 
               <div className="flex flex-row items-start">
                 <div className="bg-indigo-100 p-5 px-10 w-full flex items-center dark:bg-gray-700">
-                  <p className="text-gray-700 text-sm dark:text-gray-400">{faq.answer}</p>
+                  <div className="text-gray-700 text-sm dark:text-gray-400">{faq.answer}</div>
                 </div>
                 <div
                   className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-indigo-500 text-white border-4 border-white text-xl font-semibold">

@@ -16,7 +16,7 @@ type DigitalMarketingPageProps = {
 }
 
 export async function generateMetadata(props: DigitalMarketingPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'SocialMarketing',
@@ -29,7 +29,7 @@ export async function generateMetadata(props: DigitalMarketingPageProps) {
 }
 
 export default async function DigitalMarketingPage(props: DigitalMarketingPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
 
   let products: any[] = [];

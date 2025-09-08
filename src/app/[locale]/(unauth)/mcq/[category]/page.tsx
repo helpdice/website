@@ -57,7 +57,7 @@ export default async function MCQCategoryPage(props: MCQPageProps) {
       <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
         <div className="grid grid-cols-1 gap-5.5 md:grid-cols-1 lg:grid-cols-2 xl:gap-8">
           {mcqs.map((post, key) => (
-            <McqItem key={key} blog={post} />
+            <McqItem key={`mcq-${key}-${post._id}`} blog={post} />
           ))}
         </div>
       </div>

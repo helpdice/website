@@ -10,7 +10,7 @@ type RefundPoicyPageProps = {
 }
 
 export async function generateMetadata(props: RefundPoicyPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'About',

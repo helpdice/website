@@ -40,7 +40,7 @@ function MCQOptions(question: MCQ) {
         {/* Conditional Rendering of Radio Buttons or Checkboxes */}
         <div className="space-y-3">
           {question.options.filter((option) => option !== "").map((option, index) => (
-            <div key={index} className="flex items-center">
+            <div key={`option-${option}-${index}`} className="flex items-center">
               {question.isMultipleChoice ? (
                 // Checkbox for multiple choices
                 <input

@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 const ThemeClient = ({ children }: { children: React.ReactNode }) => {
     return (
         <ThemeProvider
-          enableSystem={false}
+          enableSystem={true}
           attribute="class"
           defaultTheme="light"
         >

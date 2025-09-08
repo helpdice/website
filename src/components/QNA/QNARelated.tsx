@@ -11,7 +11,7 @@ function QnaRelated({ qnas }: { qnas: QNAListItem[] }) {
       <Text className="my-1">Related QNA's</Text>
       <ul className="rounded-lg dark:text-white"> {/* divide-y divide-gray-200 */}
         {qnas.map((qna) => (
-          <li className="px-6 py-2">
+          <li key={`related-qna-${qna._id}`} className="px-6 py-2">
             <div className="flex justify-between">
               <Link href={getUrl('QNA_SLUG', { slug: qna.slug })}><span className="font-semibold text-lg">{qna.question.slice(0, 115) + '...'}</span></Link>
               <span className="text-gray-500 text-xs w-30 text-left">1 day ago</span>

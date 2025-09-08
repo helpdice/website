@@ -5,7 +5,7 @@ type TermsOfUsePageProps = {
 }
 
 export async function generateMetadata(props: TermsOfUsePageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'TermsOfUse',
@@ -18,7 +18,7 @@ export async function generateMetadata(props: TermsOfUsePageProps) {
 }
 
 export default async function TermOfUse(props: TermsOfUsePageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale)
 
   return (

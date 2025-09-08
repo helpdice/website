@@ -7,12 +7,12 @@ import SearchBar from '@/components/SearchBar';
 import MCQHeader from './header';
 
 type MCQPageProps = {
-  params: { locale: string },
+  params: Promise<{ locale: string }>,
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export async function generateMetadata(props: MCQPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'MCQ',
@@ -47,7 +47,7 @@ export default async function MCQPage(props: MCQPageProps) {
       <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
         <div className="grid grid-cols-1 gap-5.5 md:grid-cols-1 lg:grid-cols-2 xl:gap-8">
           {mcqs.map((post, key) => (
-            <McqItem key={key} blog={post} />
+            <McqItem key={`mcq-${key}-${post._id}`} blog={post} />
           ))}
         </div>
       </div>

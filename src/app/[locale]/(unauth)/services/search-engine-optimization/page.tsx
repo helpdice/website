@@ -18,7 +18,7 @@ type SEOPageProps = {
 }
 
 export async function generateMetadata(props: SEOPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const t = await getTranslations({
     locale,
     namespace: 'SEO',
@@ -31,7 +31,7 @@ export async function generateMetadata(props: SEOPageProps) {
 }
 
 export default async function TermOfUse(props: SEOPageProps) {
-  const { locale } = props.params;
+  const { locale } = await props.params;
   setRequestLocale(locale);
   let products: any[] = [];
   try {
@@ -121,26 +121,23 @@ export default async function TermOfUse(props: SEOPageProps) {
               possible and reaching your target market. We tackle SEO from all
               sides when designing strategies for the best results.
               <ul className="ml-5 mt-4">
-                <ListItem>
-                  <p className="mb-0"><b>Technical SEO</b> : considers code, site structure, site
+                <ListItem><b>Technical SEO</b> : considers code, site structure, site
                     speed, and other metrics that impact search traffic. During
                     a technical SEO review, we ensure search engines can crawl
                     your site and its content. Also, we review 404 errors and
-                    analyze redirects.</p>
+                    analyze redirects.
                 </ListItem>
-                <ListItem>
-                  <p className="mb-0"><b>User experience (UX)</b> : is the optimization of the
+                <ListItem><b>User experience (UX)</b> : is the optimization of the
                     content of your digital properties. During an on-page SEO
                     review, we analyze user-facing aspects of your site,
-                    including content, navigation, and keyword optimization.</p>
+                    including content, navigation, and keyword optimization.
                 </ListItem>
-                <ListItem>
-                  <p className="mb-0"><b>Off-page SEO</b> : improves your SEO presence by gaining
+                <ListItem><b>Off-page SEO</b> : improves your SEO presence by gaining
                     links, strengthening the brand online, and improving the
                     popularity of the site and content. To execute off-page SEO
                     campaigns, we identify opportunities to increase your domain
                     and page authority through incoming links to your site from
-                    other high-quality properties.</p>
+                    other high-quality properties.
                 </ListItem>
               </ul>
             </div>
