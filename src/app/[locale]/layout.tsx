@@ -93,7 +93,6 @@ export default async function RootLayout(props: {
         </NextIntlClientProvider>
         <Script src="https://checkout.razorpay.com/v1/checkout.js" />
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7034818195807373" crossOrigin="anonymous" />
-        {/* <Script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js" /> */}
       </body>
     </html>
   );

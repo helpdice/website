@@ -17,7 +17,8 @@ const isAuthPage = [
   '/:locale/login(.*)',
   '/register(.*)',
   '/:locale/register(.*)',
-]
+];
+
 const isSeoPage = [
   '(\\.xml|\\.txt)$',
 ]
