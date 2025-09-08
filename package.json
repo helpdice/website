@@ -11,27 +11,27 @@
   },
   "dependencies": {
     "@helpdice/icons": "^1.1.7",
+    "@helpdice/pro": "file:packages/helpdice-pro-1.5.5.tgz",
     "@helpdice/sdk": "^0.1.6",
-    "@helpdice/ui": "^2.0.4",
-    "@helpdice/pro": "^1.5.4",
     "@helpdice/theme": "^1.0.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "@helpdice/ui": "^2.0.4",
     "next": "15.5.2",
     "next-intl": "^3.26.3",
     "next-themes": "^0.2.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-toastify": "^11.0.3",
     "sass": "^1.83.4",
     "sharp": "^0.34.3",
     "swiper": "^11.2.10"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@biomejs/biome": "2.2.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4",
-    "@biomejs/biome": "2.2.0"
+    "typescript": "^5"
   }
 }
