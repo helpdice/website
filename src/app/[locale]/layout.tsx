@@ -87,7 +87,6 @@ export default async function RootLayout(props: {
             {/* <Lines /> */}
             {/* <ToasterContext /> */}
             {props.children}
-            {/* <Footer /> */}
             <ToastContainer position="bottom-center" />
             <ScrollToTop />
           </ThemeClient>
